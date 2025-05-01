@@ -1,42 +1,93 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  height: 60px;
+  width: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px -2px 5px 1px black;
+  justify-content: space-between;
+  margin-bottom: 15px
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header .headerText {
+  font-size: 30px;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card {
-  padding: 2em;
+.mainWrapper {
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.read-the-docs {
-  color: #888;
+.chat-input-container {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background-color: white;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+  height: 80px;
+  margin-top: 15px
+}
+
+.chat-input-container:focus-within {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+}
+
+.chat-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.chat-input:focus {
+  background-color: #fff;
+}
+
+.send-button {
+  border: none;
+  background: #007bff;
+  color: white;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+  margin-left: 8px;
+}
+
+.send-button:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+}
+
+.chat-container {
+  max-height: calc(100vh - 190px);
+  height: calc(100vh - 190px);
+  overflow-y: auto;
 }
