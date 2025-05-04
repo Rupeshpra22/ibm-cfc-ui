@@ -16,11 +16,12 @@ header {
   margin-bottom: 15px
 }
 
-header .headerText {
+header .headerText div{
   font-size: 30px;
   font-family: "Audiowide", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin-top: 10px;
 }
 
 main {
@@ -108,6 +109,7 @@ main {
   max-width: 70%;
   border-radius: 15px;
   padding: 20px;
+  position: relative;
 }
 
 .AIChatContainer{
@@ -178,4 +180,27 @@ main {
     transform: translateY(-8px);
     opacity: 1;
   }
+}
+
+.clipboard{
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+
+.clipboard:hover{
+  cursor: pointer;
+}
+
+table{
+  margin: 5px 0px;
+  border-collapse: collapse;
+}
+td, tr, th{
+  border: 1px solid black;
+  padding: 2px
+}
+
+thead{
+  text-align: left;
 }

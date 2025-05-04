@@ -5,8 +5,7 @@ const InputField = () => {
     const [message, setMessage] = useState('');
     const inputRef = useRef();
     const chatContext = useContext(ChatContext);
-    const {chatDetails, setChatDetails, isApiLoading, setIsApiLoading} = chatContext;
-    console.log(chatDetails)
+    const {chatDetails, setChatDetails, setIsApiLoading} = chatContext;
 
     const callWatsonAPI = async (callMessage, message) => {
         setIsApiLoading(true)
@@ -28,7 +27,6 @@ const InputField = () => {
                 messageFrom: "AI"
             }
             currentChatData.push(newChat);
-            console.log(currentChatData)
             setChatDetails(currentChatData);
             setIsApiLoading(false)
         }
