@@ -4,7 +4,7 @@ export const ChatContext = createContext();
 
 const initialChatDetails = [
     {
-        message: "👋 Hello! I'm your farming assistant, Need help with crops, weather, or prices? Just type your question!",
+        message: "Hello👋! I'm your farming assistant, Need help with crops, weather, or prices? Just type your question!",
         messageFrom: "AI"
     }
 ]

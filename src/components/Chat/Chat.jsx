@@ -29,40 +29,37 @@ const Chat = () => {
         window.alert("Text copied to clipboard")
     }
     return (
-        <>
-            <div className="chat-container">
-                {
-                    chatDetails.map((data, index) => {
-                        const htmlString = displayResponse(data.message);
-                        return (
-                            <div className={data.messageFrom === "AI" ? "AIChatContainer" : "humanChatContainer"}>
-                                <div className={data.messageFrom === "AI" ? "AIChatWrapper" : "humanChatWrapper"}>
-                                    <div dangerouslySetInnerHTML={{ __html: htmlString }} />
-                                    {
-                                        (index !== 0 && data.messageFrom==="AI") && (
-                                            <div className="clipboard" onClick={() => clipboardHandler(data.message)}>
-                                                <img src={clipboard} width="15px" />
-                                            </div>
-                                        )
-                                    }
-
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-                {
-                    isApiLoading && (
-                        <div className="AIChatContainer">
-                            <div className="AIChatWrapper dotLoader">
-                                <span></span><span></span><span></span>
+        <div className="chat-container">
+            {
+                chatDetails.map((data, index) => {
+                    const htmlString = displayResponse(data.message);
+                    return (
+                        <div className={data.messageFrom === "AI" ? "AIChatContainer" : "humanChatContainer"}>
+                            <div className={data.messageFrom === "AI" ? "AIChatWrapper" : "humanChatWrapper"}>
+                                <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+                                {
+                                    (index !== 0 && data.messageFrom === "AI") && (
+                                        <div className="clipboard" onClick={() => clipboardHandler(data.message)}>
+                                            <img src={clipboard} width="18px" />
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
                     )
-                }
-                <div ref={bottomRef}></div>
-            </div>
-        </>
+                })
+            }
+            {
+                isApiLoading && (
+                    <div className="AIChatContainer">
+                        <div className="AIChatWrapper dotLoader">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                )
+            }
+            <div ref={bottomRef}></div>
+        </div>
     )
 }
 
