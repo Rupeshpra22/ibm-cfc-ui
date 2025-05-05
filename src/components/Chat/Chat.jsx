@@ -5,7 +5,8 @@ import clipboard from "../../assets/clipboard.svg"
 
 const Chat = () => {
     const ChatDetailsContext = useContext(ChatContext);
-    const { chatDetails, isApiLoading } = ChatDetailsContext;
+    const { chatDetails, isApiLoading, district } = ChatDetailsContext;
+    console.log(ChatDetailsContext)
     const bottomRef = useRef();
 
     useEffect(() => {
@@ -34,11 +35,11 @@ const Chat = () => {
                 chatDetails.map((data, index) => {
                     const htmlString = displayResponse(data.message);
                     return (
-                        <div className={data.messageFrom === "AI" ? "AIChatContainer" : "humanChatContainer"}>
-                            <div className={data.messageFrom === "AI" ? "AIChatWrapper" : "humanChatWrapper"}>
+                        <div className={data.messageFrom === "AI" ? "ai-chat-container" : "human-chat-container"}>
+                            <div className={data.messageFrom === "AI" ? "ai-chat-wrapper" : "human-chat-wrapper"}>
                                 <div dangerouslySetInnerHTML={{ __html: htmlString }} />
                                 {
-                                    (index !== 0 && data.messageFrom === "AI") && (
+                                    (index > 1 && data.messageFrom === "AI") && (
                                         <div className="clipboard" onClick={() => clipboardHandler(data.message)}>
                                             <img src={clipboard} width="18px" />
                                         </div>
@@ -51,8 +52,8 @@ const Chat = () => {
             }
             {
                 isApiLoading && (
-                    <div className="AIChatContainer">
-                        <div className="AIChatWrapper dotLoader">
+                    <div className="ai-chat-container">
+                        <div className="ai-chat-wrapper dot-loader">
                             <span></span><span></span><span></span>
                         </div>
                     </div>

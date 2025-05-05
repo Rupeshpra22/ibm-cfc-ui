@@ -11,10 +11,12 @@ const initialChatDetails = [
 
 export const ChatContextProvider = ({children}) => {
     const [chatDetails, setChatDetails] = useState(initialChatDetails);
-    const [isApiLoading, setIsApiLoading] = useState(false)
+    const [isApiLoading, setIsApiLoading] = useState(false);
+    const [district, setDistrict] = useState();
+    const [showDialog, setShowDialog] = useState(true)
 
     return (
-        <ChatContext.Provider value={{chatDetails, setChatDetails, isApiLoading, setIsApiLoading}}>
+        <ChatContext.Provider value={{chatDetails, setChatDetails, isApiLoading, setIsApiLoading, district, setDistrict, showDialog, setShowDialog}}>
             {children}
         </ChatContext.Provider>
     )
