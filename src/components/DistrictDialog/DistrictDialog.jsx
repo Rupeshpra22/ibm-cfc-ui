@@ -54,7 +54,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DistrictDialog() {
     const ChatDetailsContext = React.useContext(ChatContext);
-    const { setDistrict, chatDetails, setChatDetails, showDialog, setShowDialog } = ChatDetailsContext;
+    const { setDistrict, chatDetails, setChatDetails, showDialog, setShowDialog, setIsApiLoading, isApiLoading } = ChatDetailsContext;
     const [open, setOpen] = React.useState(true);
     const [currentDistrict, setCurrentDistrict] = React.useState();
 
@@ -62,19 +62,46 @@ export default function DistrictDialog() {
         setOpen(true);
     };
 
+    const districtApi = async() => {
+        setIsApiLoading(true)
+        try {
+            const aIResponse = await fetch("http://localhost:8000/set_district", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    district: currentDistrict
+                })
+            })
+            const aIData = await aIResponse.json();
+            console.log(aIData)
+            setIsApiLoading(false)
+        }
+        catch (error) {
+            console.error('Error:', error.message);
+            setIsApiLoading(false)
+        }
+    }
     const handleClose = (event, reason) => {
         setDistrict(currentDistrict)
         if (reason !== "backdropClick") {
-            setShowDialog(false)
+            setShowDialog(false);
+            districtApi().then((data)=>{
+                const currentChatData = [...chatDetails];
+                const newChat = {
+                    message: `Your location is set to ${currentDistrict}`,
+                    messageFrom: "AI"
+                }
+                currentChatData.push(newChat);
+                setChatDetails(currentChatData);
+            })
         }
-        const currentChatData = [...chatDetails];
-        const newChat = {
-            message: `Your location is set to ${currentDistrict}`,
-            messageFrom: "AI"
-        }
-        currentChatData.push(newChat);
-        setChatDetails(currentChatData)
+        
+        
     };
+
 
     const districtHandler = (e) => {
         console.log(e);

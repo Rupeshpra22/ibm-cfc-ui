@@ -15,3 +15,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - npm install
 - npm run dev
+
+## FARM IQ UI
+
+![App Screenshot](./assets/farmiq-ui.jpeg)

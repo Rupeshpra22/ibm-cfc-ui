@@ -5,7 +5,7 @@ import clipboard from "../../assets/clipboard.svg"
 
 const Chat = () => {
     const ChatDetailsContext = useContext(ChatContext);
-    const { chatDetails, isApiLoading, district } = ChatDetailsContext;
+    const { chatDetails, isApiLoading } = ChatDetailsContext;
     console.log(ChatDetailsContext)
     const bottomRef = useRef();
 
