@@ -18,4 +18,4 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## FARM IQ UI
 
-![App Screenshot](./assets/farmiq-ui.jpeg)
+![App Screenshot](./src/assets/farmiq-ui.jpeg)
